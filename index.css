@@ -1,0 +1,32 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+/* #wrap{position:absolute;top:0;left:0;bottom:0;background:#f45;width:480px;overflow: hidden}*/
+
+#wrap {
+	position: absolute;
+	width: 480px;
+	overflow: hidden;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	background: url(images/1.jpg) no-repeat center center, -webkit-gradient(linear, left top, left bottom, color-stop(0, #8beafb), color-stop(0.5, #8beafb), color-stop(0.5, #54b37b), color-stop(1, #54b37b));
+	background-size: 100%;
+}
+
+.timer {
+	width: 251px;
+	height: 184px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%, -50%, 0);
+	display: none;
+}

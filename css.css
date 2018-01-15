@@ -1,0 +1,309 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+#wrap {
+	position: absolute;
+	width: 480px;
+	overflow: hidden;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	background: url(images/1.jpg) no-repeat center center, -webkit-gradient(linear, left top, left bottom, color-stop(0, #8beafb), color-stop(0.5, #8beafb), color-stop(0.5, #54b37b), color-stop(1, #54b37b));
+	background-size: 100%;
+}
+
+.timer {
+	width: 251px;
+	height: 184px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%, -50%, 0);
+	display: none;
+}
+
+
+#fenshu {
+	height: 74px;
+	z-index: 9999;
+	position: absolute;
+	top: 40px;
+	left: 20px;
+}
+
+#shijian span {
+	float: left;
+	width: 57px;
+	padding-left: 55px;
+	height: 38px;
+	line-height: 38px;
+	background: url(images/time_bg.png) center center no-repeat;
+	background-size: 100%;
+	font-size: 20px;
+}
+
+#shijian .wai {
+	float: left;
+	width: 282px;
+	height: 22px;
+	border: 6px solid #fff;
+	border-radius: 22px;
+	position: relative;
+	overflow: hidden;
+	top: 2px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+#shijian .nei {
+	position: absolute;
+	width: 282px;
+	height: 22px;
+	background: #f0f;
+	top: 0px;
+	-webkit-transform-origin: 0% 0%;
+	z-index: -999;
+	left: -1px;
+	-webkit-transform: scale(1, 1);
+	-webkit-transform: translate3d(-564px, 0px, 0px)
+}
+
+#huaban {
+	font-size: 20px;
+	color: #fff;
+	width: 67px;
+	height: 25px;
+	line-height: 25px;
+	background: url(images/huanban_bg_2.png) center center no-repeat;
+	float: left;
+	background-size: 100%;
+	padding-left: 100px;
+}
+
+#game {
+	position: absolute;
+	width: 480px;
+	overflow: hidden;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	background: url(images/game_bg.jpg) no-repeat center center, -webkit-gradient(linear, left top, left bottom, color-stop(0, #8beafb), color-stop(0.5, #8beafb), color-stop(0.5, #4da260), color-stop(1, #4da260));
+	background-size: 100%
+}
+
+#game ul {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	list-style: none;
+	-webkit-transform: translate3d(0, 100px, 0);
+	width: 420px;
+	height: 420px;
+	margin-top: -350px;
+	margin-left: -195px;
+}
+
+#game ul li {
+	position: relative;
+	width: 122px;
+	height: 192px;
+	display: inline-block;
+}
+
+#game ul li div.wrap {
+	width: 120px;
+	height: 176px;
+	background: url(images/hole_01.png) center 165px no-repeat;
+	overflow: hidden;
+	position: relative;
+	float: left;
+	background-size: 100%
+}
+
+#game ul li div.up {
+	width: 120px;
+	height: 178px;
+	background: url(images/fllower_1.png) 0 0 no-repeat;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-size: 100%
+}
+
+#game ul li div.down {
+	width: 120px;
+	height: 15px;
+	background: url(images/hole_02.png) center 0 no-repeat;
+	position: absolute;
+	top: 176px;
+	background-size: 100%
+}
+
+#game ul li span {
+	position: absolute;
+	right: -10px;
+	top: 10px;
+	z-index: 99999;
+	transition: .3s;
+	opacity: 0;
+	color: #fff;
+	font-weight: bold;
+}
+
+#game ul li span.xian {
+	opacity: 1;
+}
+
+#zhezhao {
+	position: absolute;
+	width: 480px;
+	overflow: hidden;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	z-index: 99999;
+	background: url(images/bg.gif) no-repeat center center, -webkit-gradient(linear, left top, left bottom, color-stop(0, #8beafb), color-stop(0.5, #8beafb), color-stop(0.5, #55b279), color-stop(1, #55b279));
+	background-size: 100%;
+	display: none;
+}
+
+#zhezhao1 {
+	position: absolute;
+	width: 480px;
+	overflow: hidden;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	z-index: 99999;
+	background: rgba(0, 0, 0, .3);
+	background-size: 100%;
+	display: block;
+}
+
+#zhezhao1 img {
+	width: 251px;
+	height: 184px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate3d(-50%, -50%, 0);
+	border: none;
+}
+
+
+/* 算数层，获得多少精油 */
+
+#zhezhao2 {
+	position: absolute;
+	width: 480px;
+	overflow: hidden;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	z-index: 99999;
+	background: rgba(0, 0, 0, .3);
+	display: none;
+}
+
+#zhezhao2 .shuju {
+	width: 428px;
+	height: 537px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate3d(-50%, -50%, 0);
+	background: url(images/game_cuiqi1.png);
+}
+
+#zhezhao2 .shuju .baifenbi {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -118px;
+	margin-left: -21px;
+	font-size: 21px;
+	color: red
+}
+
+#zhezhao2 .shuju .jingyoushu {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: 90px;
+	margin-left: 6px;
+}
+
+.donghua1 {
+	-webkit-animation-name: 'donghua1';
+	-webkit-animation-duration: 1s;
+	-webkit-animation-direction: normal;
+	-webkit-animation-iteration-count: 1;
+}
+
+.donghua2 {
+	-webkit-animation-name: 'donghua2';
+	-webkit-animation-duration: 3s;
+	-webkit-animation-direction: normal;
+	-webkit-animation-iteration-count: 1;
+}
+
+.donghua3 {
+	-webkit-animation-name: 'donghua3';
+	-webkit-animation-duration: 60s;
+	-webkit-animation-direction: normal;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes 'donghua1' {
+	0% {
+		top: 200px;
+	}
+	30% {
+		top: 0px;
+	}
+	80% {
+		top: 0px;
+	}
+	100% {
+		top: 200px;
+	}
+}
+
+
+/*//动画2*/
+
+@-webkit-keyframes 'donghua2' {
+	0% {
+		top: 200px;
+	}
+	50% {
+		top: 0px;
+	}
+	80% {
+		top: 0px;
+	}
+	100% {
+		top: 200px;
+	}
+}
+
+
+/* 动画3 */
+
+@-webkit-keyframes 'donghua3' {
+	0% {
+		/* -webkit-transform:scale(1,1) */
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	100% {
+		/*-webkit-transform:scale(0.003,1);*/
+		-webkit-transform: translate3d(-564px, 0px, 0px);
+	}
+}
