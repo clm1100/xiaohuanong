@@ -80,8 +80,7 @@
 	}
 
 	$(function () {
-		Promise.resolve().then(function(data){
-			console.log("启动遮罩层");
+		Promise.resolve(3).then(function(data){
 			return new Promise(function(resolve,reject){
 				resolve("22")
 			})
@@ -147,6 +146,5 @@
 					}
 				}
 			}, 300)
-
 		}, 4000)
 	})
