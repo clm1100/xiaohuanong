@@ -1,8 +1,11 @@
+	require('./css.css')
 	document.addEventListener("touchmove", function (e) {
 		e.preventDefault();
 	}, false);
+	var $ = require('jquery');
 	var t = 0;
-	var arr = ["images/3_3.png",
+	var arr = [
+		"images/3_3.png",
 		"images/2_2.png",
 		"images/1_1.png",
 		"images/4.png"
@@ -18,66 +21,79 @@
 		"url(images/fllower_4.png)"
 	]
 
+	function badflower(obj,img1,img2,i){
+		$('<div class="up donghua1"></div>').appendTo($('li .wrap').eq(i)).css({
+			"background-image": imgArr[2]
+		})
+		_this.kk = $('li .wrap').eq(i).find(".up").get(0);
+		_this.kk.addEventListener("touchstart", function () {
+			if (lock[i]) {
+				$(this).css({
+					"background-image": imgArr[3]
+				});
+				defen--;
+				$("#huaban").html(defen)
+				lock[i] = false;
+			}
+		}, false);
+		_this.kk.addEventListener("webkitAnimationEnd", function () {
+			lock[i] = true;
+			$(this).parents(".wrap").children(".up").remove();
+		}, false)
+	}
+
+	function goodflower(obj,img1,img2,i){
+		$('<div class="up donghua1"></div>').appendTo($('li .wrap').eq(i)).css({
+			"background-image": img1
+		});
+		obj.kk = $('li .wrap').eq(i).find(".up").get(0);
+		obj.kk.addEventListener("touchstart", function () {
+
+			if (lock[i]) {
+				$(this).css({
+					"background-image": img2
+				});
+				defen++;
+				$("#huaban").html(defen)
+				$("li span").eq(i).addClass("xian")
+				lock[i] = false;
+			}
+		}, false);
+		obj.kk.addEventListener("webkitAnimationEnd", function () {
+			lock[i] = true;
+			$("li span").eq(i).removeClass("xian");
+			$(this).parents(".wrap").children(".up").remove();
+		}, false)
+	}
+
 	function huaihua(i) {
 		var suiji = Math.random() * 10 - 8;
+		_this = this;
+		
 		if (suiji > 0) {
 			//坏花出现
-			_this = this;
-			$('<div class="up donghua1"></div>').appendTo($('li .wrap').eq(i)).css({
-				"background-image": imgArr[2]
-			})
-			//此句话必须在上一句的后面，只有创建了元素之后，才能得到元素，并且修改元素属性，若放到上一句上一句的前面，会出现bug
-			//$(".up").css({"background-image": imgArr[2]});   
-			_this.kk = $('li .wrap').eq(i).find(".up").get(0);
-			//随机定义花的种类，是好花还是坏花;		  
-			_this.kk.addEventListener("touchstart", function () {
-				if (lock[i]) {
-					$(this).css({
-						"background-image": imgArr[3]
-					});
-					defen--;
-					$("#huaban").html(defen)
-					lock[i] = false;
-				}
-			}, false);
-			_this.kk.addEventListener("webkitAnimationEnd", function () {
-				lock[i] = true;
-				$(this).parents(".wrap").children(".up").remove();
-			}, false)
+			badflower(_this,imgArr[2],imgArr[3],i)
 		} else {
 			//好花出现
-			_this = this;
-			$('<div class="up donghua1"></div>').appendTo($('li .wrap').eq(i)).css({
-				"background-image": imgArr[0]
-			});
-			//此句话必须在上一句的后面，只有创建了元素之后，才能得到元素，并且修改元素属性，若放到上一句上一句的前面，会出现bug
-			//$(".up").css({"background-image": imgArr[0]});   
-			_this.kk = $('li .wrap').eq(i).find(".up").get(0);
-			//随机定义花的种类，是好花还是坏花;
-			_this.kk.addEventListener("touchstart", function () {
-
-				if (lock[i]) {
-					$(this).css({
-						"background-image": imgArr[1]
-					});
-					defen++;
-					$("#huaban").html(defen)
-					$("li span").eq(i).addClass("xian")
-					lock[i] = false;
-				}
-			}, false);
-			_this.kk.addEventListener("webkitAnimationEnd", function () {
-				lock[i] = true;
-				$("li span").eq(i).removeClass("xian");
-				$(this).parents(".wrap").children(".up").remove();
-			}, false)
-
+			goodflower(_this,imgArr[0],imgArr[1],i)
 		}
 	}
 
-
-
 	$(function () {
+		Promise.resolve().then(function(data){
+			console.log("启动遮罩层");
+			return new Promise(function(resolve,reject){
+				resolve("22")
+			})
+		}).then(function(then){
+			console.log("遮罩层关闭，启动游戏");
+		}).then(function(then){
+			console.log("遮罩层关闭，启动游戏");
+		}).then(function(then){
+			
+		}).then(function(then){
+			
+		})
 		var gameovertimer = window.setTimeout(function () {
 			$(".jingyoushu").html(parseInt(defen / 10, 10));
 			$("#zhezhao2").show().bind("touchstart", function () {
@@ -108,52 +124,29 @@
 			}, 1000);
 			$(".nei").bind("webkitAnimationEnd", function (e) {
 
-				//alert($(".nei").length)
-				//$(".nei")[0].style.display="none";
-				//e.stopPropagation();
-				//$(this).hide();
-				//$(".nei").css("width","1px");
-
-
 			})
-			/*	window.setTimeout(function(){
-					window.clearInterval(time1);
-					$(".up").hide();
-				},30000);*/
 			var time1 = window.setInterval(function () {
 				/*需要两个参数，1随机的个数，2，根据随机的个数得到一个数组，此数组用来生成花的随机位置，一共九个位置，根据查重算法，去掉重复的项，得到一个每项不会重复的数组，*/
 				var ge = Math.floor(Math.random() * 4) + 1
-				var arr = []
+				var arr = [];
+				var arr2 = [];				
 				for (var t = 0; t < ge; t++) {
 					arr.push(Math.floor(Math.random() * 9))
 				}
-				// 查重算法
-				//arr=[4,3,2,5,2,3,4,2,4,2,4,2,4]
-				//alert(arr)
-				for (var i = 0; i < arr.length - 1; i++) {
-
-					for (var j = i + 1; j < arr.length; j++) {
-						if (arr[i] == arr[j]) {
-							arr.splice(j, 1)
-							j--
-						}
+				arr.forEach((e)=>{
+					if(arr2.indexOf(e)== -1){
+						arr2.push(e)
 					}
-
-				}
-
-				for (var t = 0; t < arr.length; t++) {
+				})
+				for (var t = 0; t < arr2.length; t++) {
 					//new huaihua(t)
-					//在这判断
-					if ($('li .wrap').eq(arr[t]).find(".up").length == 0) {
+					if ($('li .wrap').eq(arr2[t]).find(".up").length == 0) {
 						(function (n) {
 							new huaihua(n)
-
-						})(arr[t])
+						})(arr2[t])
 					}
-
-				};
+				}
 			}, 300)
 
 		}, 4000)
-
 	})
