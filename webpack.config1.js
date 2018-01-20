@@ -3,12 +3,12 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
     entry: {
-        main: path.join(__dirname,'./src/game.js')
+        main: './js.js'
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: '[name].[hash].js',
-        publicPath:'/'
+        filename: '[name].js',
+        publicPath: 'dist/' 
     },
     devtool: 'inline-source-map',
     module: {
@@ -29,12 +29,7 @@ module.exports = {
             {
                 test: /\.(png|jpg|gif)$/,
                 // loader: 'file-loader',
-                loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]'
-                // loader: 'url-loader?limit=8192'
-            },
-            {
-                test: /\.(htm|html)$/i,
-                 use:[ 'html-withimg-loader'] 
+                loader: 'url-loader?limit=8192'
             }
         ]
     },
@@ -44,10 +39,10 @@ module.exports = {
     },
     plugins: [
         // new UglifyJsPlugin(),
-        new HtmlWebpackPlugin({
-            filename:'./abb.html',
-            template:path.join(__dirname,'./src/game.html'),
-            inject:['main']
-        })
+        // new HtmlWebpackPlugin({
+        //     filename:'/game.html',
+        //     template:'./game.html',
+        //     inject:['main']
+        // })
     ]
 }

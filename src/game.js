@@ -4,22 +4,25 @@
 	}, false);
 	var $ = require('jquery');
 	var t = 0;
+	console.log(require("./images/3_3.png"))
+	console.log(require("./images/2_2.png"))
+	console.log(require("./images/1_1.png"))
 	var arr = [
-		"images/3_3.png",
-		"images/2_2.png",
-		"images/1_1.png",
-		"images/4.png"
-	];
+		require("./images/3_3.png"),
+		require("./images/2_2.png"),
+		require("./images/1_1.png"),
+		require("./images/4.png"),
+	]
 	var zonglock = false;
 	var defen = 0;
 	var lock = [true, true, true, true, true, true, true, true, true]
 	var timer;
 	var imgArr = [
-		"url(images/fllower_1.png)",
-		"url(images/fllower_2.png)",
-		"url(images/fllower_3.png)",
-		"url(images/fllower_4.png)"
-	]
+		`url(${require("./images/fllower_1.png")})`,
+		`url(${require("./images/fllower_2.png")})`,
+		`url(${require("./images/fllower_3.png")})`,
+		`url(${require("./images/fllower_4.png")})`,
+	];
 
 	function badflower(obj,img1,img2,i){
 		$('<div class="up donghua1"></div>').appendTo($('li .wrap').eq(i)).css({
@@ -96,7 +99,7 @@
 		var gameovertimer = window.setTimeout(function () {
 			$(".jingyoushu").html(parseInt(defen / 10, 10));
 			$("#zhezhao2").show().bind("touchstart", function () {
-				window.location.href = "game.html"
+				window.location.reload()
 			});
 
 		}, 41000)
