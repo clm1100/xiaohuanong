@@ -1,4 +1,5 @@
 const path = require('path');
+console.log("99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999")
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
@@ -8,7 +9,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: '[name].[hash].js',
-        publicPath:'/'
+        // publicPath: 'dist/' 
     },
     devtool: 'inline-source-map',
     module: {

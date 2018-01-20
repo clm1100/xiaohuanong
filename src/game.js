@@ -4,9 +4,6 @@
 	}, false);
 	var $ = require('jquery');
 	var t = 0;
-	console.log(require("./images/3_3.png"))
-	console.log(require("./images/2_2.png"))
-	console.log(require("./images/1_1.png"))
 	var arr = [
 		require("./images/3_3.png"),
 		require("./images/2_2.png"),
