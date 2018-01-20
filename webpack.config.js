@@ -1,5 +1,5 @@
 const path = require('path');
-console.log("99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999")
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
@@ -13,20 +13,7 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     module: {
-        loaders: [{
-                test: /\.css$/,
-                use: [{
-                        loader: 'style-loader',
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1,
-                        }
-                    },
-
-                ]
-            },
+        loaders: [
             {
                 test: /\.(png|jpg|gif)$/,
                 // loader: 'file-loader',
@@ -36,6 +23,13 @@ module.exports = {
             {
                 test: /\.(htm|html)$/i,
                  use:[ 'html-withimg-loader'] 
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader"
+                })
             }
         ]
     },
@@ -44,11 +38,13 @@ module.exports = {
         port: 3000
     },
     plugins: [
-        // new UglifyJsPlugin(),
+        // new ExtractTextPlugin("[name][hash:8].css"),
+        new UglifyJsPlugin(),
         new HtmlWebpackPlugin({
             filename:'./abb.html',
             template:path.join(__dirname,'./src/game.html'),
             inject:['main']
-        })
+        }),
+        new ExtractTextPlugin("css.css")        
     ]
 }
